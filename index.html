@@ -1121,18 +1121,19 @@
 
             // New function to preload .ics files
             async function preloadIcsFiles() {
+                var ScheduleFolder = 'F25-26';
                 const preloadFiles = [
-                    { name: 'Abbas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Abbas-gt-scheduler.ics' },
-                    { name: 'Ahmed.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Ahmed-gt-scheduler.ics' },
-                    { name: 'Armando.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Armando-gt-scheduler.ics' },
-                    { name: 'Grayson.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Grayson-gt-scheduler.ics' },
-                    { name: 'Hari.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Hari-gt-scheduler.ics' },
-                    { name: 'James.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/James-gt-scheduler.ics' },
-                    { name: 'Lucas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Lucas-gt-scheduler.ics' },
-                    { name: 'Matt.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Matt-gt-scheduler.ics' },
-                    { name: 'Ryan.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Ryan-gt-scheduler.ics' },
-                    { name: 'Sebastian.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Sebastian-gt-scheduler.ics' },
-                    { name: 'Zach.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/schedules/Zach-gt-scheduler.ics' }
+                    { name: 'Abbas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Abbas-gt-scheduler.ics' },
+                    { name: 'Ahmed.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ahmed-gt-scheduler.ics' },
+                    { name: 'Armando.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Armando-gt-scheduler.ics' },
+                    { name: 'Grayson.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Grayson-gt-scheduler.ics' },
+                    { name: 'Hari.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Hari-gt-scheduler.ics' },
+                    { name: 'James.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/James-gt-scheduler.ics' },
+                    { name: 'Lucas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Lucas-gt-scheduler.ics' },
+                    { name: 'Matt.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Matt-gt-scheduler.ics' },
+                    { name: 'Ryan.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ryan-gt-scheduler.ics' },
+                    { name: 'Sebastian.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Sebastian-gt-scheduler.ics' },
+                    { name: 'Zach.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Zach-gt-scheduler.ics' }
                 ];
                 
                 const fetchPromises = preloadFiles.map(async (file) => {
