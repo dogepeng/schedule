@@ -41,30 +41,19 @@
         .time-slot, .day-header, .event-slot {
             background-color: var(--cell-bg);
             color: var(--text-color);
-            border: 2px solid var(--grid-color);
-            border-left: none;
-            border-top: none;
-        }
-
-        .time-slot:nth-child(24n + 2) {
-            border-left: 2px solid var(--grid-color);
-        }
-        .day-header {
-            border-top: none;
-        }
-
-        .day-header:first-child {
-            border: 2px solid var(--grid-color);
-            border-top: none;
-            border-right: 2px solid var(--grid-color);
             border-bottom: 2px solid var(--grid-color);
-            border-left: none;
+            border-right: 2px solid var(--grid-color);
+        }
+
+        /* Fix for the last column */
+        .last-col {
+            border-right: 2px solid var(--grid-color);
         }
         
-        .time-slot:first-of-type, .event-slot:first-of-type {
-            border-top: 2px solid var(--grid-color);
+        /* Remove border from last row */
+        .last-row {
+            border-bottom: none;
         }
-
         /* Fix for the last column */
         .last-col {
             border-right: 2px solid var(--grid-color);
@@ -79,9 +68,10 @@
         .time-slot {
             height: 48px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: flex-end;
             padding-right: 8px;
+            padding-top: 4px;
             font-size: 0.75rem;
             position: relative;
         }
@@ -814,9 +804,11 @@
                 for (let hour = startHour; hour <= endHour; hour++) {
                     const timeSlot = document.createElement('div');
                     timeSlot.className = 'time-slot';
+                    const timeSpan = document.createElement('span');
                     const time = new Date();
                     time.setHours(hour, 0, 0, 0);
-                    timeSlot.textContent = formatTime(time, displayTimezone);
+                    timeSpan.textContent = formatTime(time, displayTimezone);
+                    timeSlot.appendChild(timeSpan);
                     if (hour === endHour) {
                         timeSlot.classList.add('last-row');
                     }
