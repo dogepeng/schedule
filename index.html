@@ -48,29 +48,31 @@
             border-bottom: 2px solid var(--grid-color);
             border-right: 2px solid var(--grid-color);
             /* Override any stray borders from previous configs */
-            border-top: none;
-            border-left: none;
+            border-top: none !important;
+            border-left: none !important;
+            box-sizing: border-box; /* Strict height calculation */
         }
 
         .time-slot {
             height: 48px;
             display: flex;
-            align-items: flex-start;
+            align-items: flex-start; /* Aligns text inside the top of the block */
             justify-content: flex-end;
             padding-right: 8px;
-            padding-top: 4px;
+            padding-top: 4px; /* Matches the event padding perfectly */
             font-size: 0.75rem;
             position: relative;
         }
+        
         .day-header {
             text-align: center;
             padding: 8px 0;
             font-weight: 500;
         }
+        
         .event-slot {
             position: relative;
-            min-height: 48px;
-            /* Added padding for consistent horizontal spacing */
+            height: 48px; /* Strict height to prevent grid stretching offsets */
             padding: 0 2px;
         }
 
