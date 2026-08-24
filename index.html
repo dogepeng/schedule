@@ -186,6 +186,10 @@
         /* Sidebar Toggle Styles */
         #sidebar {
             transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+        }
+        #sidebar.sidebar-closed {
+            transform: translateX(-100%);
         }
         @media (max-width: 767px) {
             #sidebar {
