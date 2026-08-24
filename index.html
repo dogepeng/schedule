@@ -1120,49 +1120,49 @@
             });
 
             // New function to preload .ics files
-            async function preloadIcsFiles() {
-                var ScheduleFolder = 'F26-27';
-                const preloadFiles = [
-                    { name: 'Abbas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Abbas.ics' }
-                    // { name: 'Ahmed.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ahmed.ics' },
-                    // { name: 'Armando.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Armando.ics' },
-                    // { name: 'Grayson.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Grayson.ics' },
-                    // { name: 'Hari.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Hari.ics' },
-                    // { name: 'James.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/James.ics' },
-                    // { name: 'Lucas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Lucas.ics' },
-                    // { name: 'Matt.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Matt.ics' },
-                    // { name: 'Ryan.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ryan.ics' },
-                    // { name: 'Sebastian.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Sebastian.ics' },
-                    // { name: 'Zach.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Zach.ics' }
-                ];
+            // async function preloadIcsFiles() {
+            //     var ScheduleFolder = 'F26-27';
+            //     const preloadFiles = [
+            //         { name: 'Abbas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Abbas.ics' }
+            //         { name: 'Ahmed.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ahmed.ics' },
+            //         { name: 'Armando.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Armando.ics' },
+            //         { name: 'Grayson.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Grayson.ics' },
+            //         { name: 'Hari.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Hari.ics' },
+            //         { name: 'James.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/James.ics' },
+            //         { name: 'Lucas.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Lucas.ics' },
+            //         { name: 'Matt.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Matt.ics' },
+            //         { name: 'Ryan.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Ryan.ics' },
+            //         { name: 'Sebastian.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Sebastian.ics' },
+            //         { name: 'Zach.ics', url: 'https://raw.githubusercontent.com/dogepeng/Schedule/main/'+ScheduleFolder+'/Zach.ics' }
+            //     ];
                 
-                const fetchPromises = preloadFiles.map(async (file) => {
-                    try {
-                        const response = await fetch(file.url);
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        const text = await response.text();
-                        const events = parseIcs(text);
+            //     const fetchPromises = preloadFiles.map(async (file) => {
+            //         try {
+            //             const response = await fetch(file.url);
+            //             if (!response.ok) {
+            //                 throw new Error(`HTTP error! status: ${response.status}`);
+            //             }
+            //             const text = await response.text();
+            //             const events = parseIcs(text);
 
-                        const colorIndex = uploadedCalendars.length % colorPalette.length;
-                        const color = colorPalette[colorIndex];
+            //             const colorIndex = uploadedCalendars.length % colorPalette.length;
+            //             const color = colorPalette[colorIndex];
                         
-                        uploadedCalendars.push({
-                            name: file.name,
-                            color: color,
-                            events: events,
-                            enabled: true
-                        });
-                        showMessage(`Successfully preloaded ${file.name}!`, false);
-                    } catch (e) {
-                        showMessage(`Error preloading file ${file.name}. Please ensure the URL is correct.`);
-                        console.error(`Error preloading file ${file.name}:`, e);
-                    }
-                });
+            //             uploadedCalendars.push({
+            //                 name: file.name,
+            //                 color: color,
+            //                 events: events,
+            //                 enabled: true
+            //             });
+            //             showMessage(`Successfully preloaded ${file.name}!`, false);
+            //         } catch (e) {
+            //             showMessage(`Error preloading file ${file.name}. Please ensure the URL is correct.`);
+            //             console.error(`Error preloading file ${file.name}:`, e);
+            //         }
+            //     });
 
-                await Promise.all(fetchPromises);
-            }
+            //     await Promise.all(fetchPromises);
+            // }
 
 
             // --- Initial Load ---
@@ -1170,10 +1170,8 @@
             // If there are no calendars in local storage, preload from GitHub
             if (uploadedCalendars.length === 0) {
                  applyPalette(generateRandomPalette());
-                 preloadIcsFiles().then(() => {
-                     renderSidebar();
-                     renderCalendar();
-                 });
+                 renderSidebar();
+                 renderCalendar();
             } else {
                 renderSidebar();
                 renderCalendar();
